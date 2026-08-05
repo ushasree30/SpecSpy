@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpecSpy | Settings</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+background:linear-gradient(-45deg,#2563eb,#4f46e5,#06b6d4,#3b82f6);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+
+min-height:100vh;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:22px 60px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+color:white;
+
+}
+
+.logo{
+
+font-size:34px;
+font-weight:bold;
+
+}
+
+.back{
+
+padding:12px 25px;
+
+background:#6c757d;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.back:hover{
+
+background:#495057;
+
+transform:translateY(-3px);
+
+}
+
+.container{
+
+width:92%;
+max-width:900px;
+
+margin:40px auto;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+border-radius:25px;
+
+padding:40px;
+
+color:white;
+
+box-shadow:0 15px 30px rgba(0,0,0,.25);
+
+}
+
+.card h1{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:35px;
+
+}
+
+.info{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.info td{
+
+padding:20px;
+
+border-bottom:1px solid rgba(255,255,255,.25);
+
+font-size:21px;
+
+}
+
+.label{
+
+font-weight:bold;
+
+width:300px;
+
+}
+
+.value{
+
+font-weight:bold;
+
+color:#81d4fa;
+
+}
+.save-btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#0d6efd;
+
+color:white;
+
+text-decoration:none;
+
+border:none;
+
+border-radius:50px;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.save-btn:hover{
+
+background:#084298;
+
+transform:translateY(-4px);
+
+}
+
+.dashboard-btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+background:#6c757d;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:50px;
+
+font-size:20px;
+
+font-weight:bold;
+
+margin-left:15px;
+
+transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+background:#495057;
+
+transform:translateY(-4px);
+
+}
+
+.buttons{
+
+text-align:center;
+
+margin-top:35px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+👓 SpecSpy
+
+</div>
+
+<a href="/dashboard" class="back">
+
+⬅ Dashboard
+
+</a>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+
+⚙️ Settings
+
+</h1>
+
+<table class="info">
+<tr>
+
+<td class="label">
+🔔 Notifications
+</td>
+
+<td class="value" th:text="${notifications}">
+ON
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+🌙 Dark Mode
+</td>
+
+<td class="value" th:text="${darkMode}">
+OFF
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+🌐 Language
+</td>
+
+<td class="value" th:text="${language}">
+English
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+📶 Bluetooth
+</td>
+
+<td class="value" th:text="${bluetooth}">
+Auto Connect
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+🔊 Ring Volume
+</td>
+
+<td class="value" th:text="${volume}">
+80%
+</td>
+
+</tr>
+
+</table>
+<div class="buttons">
+
+<button class="save-btn">
+
+💾 Save Settings
+
+</button>
+
+<a href="/dashboard" class="dashboard-btn">
+
+⬅ Back to Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+</html>

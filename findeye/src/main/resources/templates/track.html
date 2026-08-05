@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpecSpy | Track Glasses</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+background:linear-gradient(-45deg,#2563eb,#4f46e5,#06b6d4,#3b82f6);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+
+min-height:100vh;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:22px 60px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+color:white;
+
+}
+
+.logo{
+
+font-size:32px;
+font-weight:bold;
+
+}
+
+.back{
+
+padding:12px 25px;
+
+background:#6c757d;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.back:hover{
+
+background:#495057;
+
+transform:translateY(-3px);
+
+}
+
+.container{
+
+width:92%;
+max-width:1100px;
+
+margin:40px auto;
+
+}
+
+.title{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+padding:35px;
+
+border-radius:25px;
+
+color:white;
+
+text-align:center;
+
+margin-bottom:30px;
+
+box-shadow:0 15px 30px rgba(0,0,0,.2);
+
+}
+
+.title h1{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+}
+
+.title p{
+
+font-size:18px;
+
+opacity:.9;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+border-radius:25px;
+
+padding:35px;
+
+color:white;
+
+box-shadow:0 15px 30px rgba(0,0,0,.25);
+
+}
+
+.info{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.info td{
+
+padding:22px;
+
+border-bottom:1px solid rgba(255,255,255,.25);
+
+font-size:22px;
+
+}
+
+.label{
+
+font-weight:bold;
+
+width:300px;
+
+}
+
+.value{
+
+font-weight:bold;
+
+}
+
+.green{
+
+color:#7CFC00;
+
+}
+
+.red{
+
+color:#ff7675;
+
+}
+
+.yellow{
+
+color:#ffe082;
+
+}
+
+.blue{
+
+color:#81d4fa;
+
+}
+
+.buttons{
+
+text-align:center;
+
+margin-top:40px;
+
+}
+.search-btn{
+
+background:#0d6efd;
+
+color:white;
+
+}
+
+.search-btn:hover{
+
+background:#084298;
+
+transform:translateY(-3px);
+
+}
+
+.ring-btn{
+
+background:#28a745;
+
+color:white;
+
+}
+
+.ring-btn:hover{
+
+background:#1e7e34;
+
+transform:translateY(-3px);
+
+}
+
+.map-btn{
+
+display:inline-block;
+
+margin-top:18px;
+
+padding:12px 22px;
+
+background:#0d6efd;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.map-btn:hover{
+
+background:#084298;
+
+transform:translateY(-3px);
+
+}
+
+button{
+
+padding:16px 35px;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+font-size:20px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-4px);
+
+}
+
+.message{
+
+margin-top:25px;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#7CFC00;
+
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+👓 SpecSpy
+
+</div>
+
+<a href="/dashboard" class="back">
+
+⬅ Dashboard
+
+</a>
+
+</nav>
+
+<div class="container">
+
+<div class="title">
+
+<h1>
+
+📍 Track Your Smart Glasses
+
+</h1>
+
+<p>
+
+Find your glasses in seconds.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<table class="info">
+    <tr>
+
+<td class="label">
+📶 Bluetooth Status
+</td>
+
+<td class="value" th:text="${status}">
+🔴 Disconnected
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+📱 Device Name
+</td>
+
+<td class="value blue" th:text="${deviceName}">
+FindEye Smart Glasses
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+📡 Signal Strength
+</td>
+
+<td class="value yellow" th:text="${signal}">
+Excellent
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+🔋 Battery
+</td>
+
+<td>
+
+<div style="width:100%;background:rgba(255,255,255,.25);border-radius:25px;overflow:hidden;">
+
+<div style="width:92%;background:#7CFC00;color:black;text-align:center;padding:8px;font-weight:bold;">
+
+<span th:text="${battery}">
+92%
+</span>
+
+</div>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">
+📍 Last Known Location
+</td>
+
+<td>
+
+<div class="value" th:text="${location}">
+Living Room
+</div>
+
+<a
+th:if="${connected}"
+th:href="${mapLink}"
+target="_blank"
+class="map-btn">
+
+🗺 View on Google Maps
+
+</a>
+
+</td>
+
+</tr>
+
+</table>
+<div class="buttons">
+
+<div th:if="${!connected}">
+
+<form action="/search" method="get">
+
+<button class="search-btn" type="submit">
+
+🔍 Locate My Glasses
+
+</button>
+
+</form>
+
+</div>
+
+<div th:if="${connected}">
+
+<form action="/ring" method="get">
+
+<button class="ring-btn" type="submit">
+
+🔔 Ring My Glasses
+
+</button>
+
+</form>
+
+<br><br>
+
+<button type="button" class="ring-btn" onclick="speakStatus()">
+
+🎤 Speak Status
+
+</button>
+
+</div>
+
+<p class="message" th:text="${ringMessage}"></p>
+
+</div>
+
+</div>
+
+</div>
+<script th:if="${status == '🔵 Searching...'}">
+
+setTimeout(function(){
+
+window.location.href="/connected";
+
+},3000);
+
+</script>
+<script>
+
+function speakStatus(){
+
+const text =
+"Hello Ushasree. Your SpecSpy Smart Glasses are connected.. Battery is ninety two percent. Signal strength is excellent. Last known location is Living Room.";
+
+const speech = new SpeechSynthesisUtterance(text);
+
+speech.rate = 1;
+speech.pitch = 1;
+
+window.speechSynthesis.speak(speech);
+
+}
+
+</script>
+
+</body>
+
+</html>

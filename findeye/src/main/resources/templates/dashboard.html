@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpecSpy Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,#2563eb,#4f46e5,#06b6d4,#3b82f6);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+min-height:100vh;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 60px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(18px);
+color:white;
+}
+
+.logo{
+font-size:34px;
+font-weight:bold;
+}
+
+.logout{
+padding:12px 25px;
+background:#ff4d4d;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.logout:hover{
+background:#d63031;
+transform:translateY(-3px);
+}
+
+.container{
+width:92%;
+max-width:1400px;
+margin:40px auto;
+}
+
+.welcome{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(20px);
+border-radius:25px;
+padding:35px;
+color:white;
+margin-bottom:35px;
+box-shadow:0 15px 30px rgba(0,0,0,.25);
+}
+
+.welcome h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.welcome p{
+font-size:18px;
+opacity:.9;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(18px);
+border-radius:20px;
+padding:30px;
+color:white;
+text-decoration:none;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h2{
+margin-bottom:18px;
+font-size:30px;
+}
+
+.card p{
+font-size:20px;
+}
+
+.value{
+font-size:24px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.red{
+color:#ff7675;
+}
+
+.green{
+color:#7CFC00;
+}
+
+.yellow{
+color:#ffe082;
+}
+
+.blue{
+color:#81d4fa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+👓 SpecSpy Dashboard
+</div>
+
+<a href="/logout" class="logout">
+Logout
+</a>
+
+</nav>
+
+<div class="container">
+
+<div class="welcome">
+
+<h1>
+Welcome,
+<span th:text="${username}">Ushasree</span>
+👋
+</h1>
+
+<p>
+Manage and track your smart glasses easily.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>📶 Bluetooth Status</h2>
+
+<div class="value red" th:text="${status}">
+🔴 Disconnected
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📱 Device Name</h2>
+
+<div class="value blue" th:text="${deviceName}">
+FindEye Smart Glasses
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🔋 Battery</h2>
+
+<div class="value green" th:text="${battery}">
+92%
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📡 Signal</h2>
+
+<div class="value yellow" th:text="${signal}">
+Excellent
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📍 Last Location</h2>
+
+<div class="value" th:text="${location}">
+Living Room
+</div>
+
+</div>
+
+<a href="/track" class="card">
+
+<h2>🔍 Track Glasses</h2>
+
+<p>
+Locate your smart glasses.
+</p>
+
+<div class="value blue">
+➡ Click Here
+</div>
+
+</a>
+
+<a href="/ring" class="card">
+
+<h2>🔔 Ring Glasses</h2>
+
+<p>
+Make your glasses ring.
+</p>
+
+<div class="value green">
+➡ Click Here
+</div>
+
+</a>
+
+<a href="/profile" class="card">
+
+<h2>👤 Profile</h2>
+
+<p>
+View your account information.
+</p>
+
+<a href="/settings" class="card">
+
+<h2>⚙️ Settings</h2>
+
+<p>
+Manage your application settings.
+</p>
+
+<div class="value blue">
+➡ Click Here
+</div>
+
+</a>
+
+<div class="value blue">
+➡ Click Here
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
